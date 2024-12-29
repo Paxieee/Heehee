@@ -1,0 +1,41 @@
+{
+  "name": "heehee",
+  "version": "1.0.0",
+  "description": "eCommerce application built with the MERN stack",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "browserslist": "^4.24.3",
+    "caniuse-lite": "^1.0.30001690",
+    "convert-source-map": "^2.0.0",
+    "debug": "^4.4.0",
+    "electron-to-chromium": "^1.5.75",
+    "escalade": "^3.2.0",
+    "express": "^4.21.2",
+    "gensync": "^1.0.0-beta.2",
+    "globals": "^11.12.0",
+    "js-tokens": "^4.0.0",
+    "jsesc": "^3.1.0",
+    "json5": "^2.2.3",
+    "lru-cache": "^5.1.1",
+    "ms": "^2.1.3",
+    "node-releases": "^2.0.19",
+    "picocolors": "^1.1.1",
+    "semver": "^6.3.1",
+    "update-browserslist-db": "^1.1.1",
+    "yallist": "^3.1.1"
+  },
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Amber Pan",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.1",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9"
+  }
+}
