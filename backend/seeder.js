@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import Color from "color";
+import colors from "colors";
 import users from "./data/users.js";
 import products from "./data/products.js";
-import User from "./models/userModels.js";
+import User from "./models/userModel.js";
 import Product from "./models/productModel.js";
 import Order from "./models/orderModel.js";
-import connectDB from "./config/db";
+import connectDB from "./config/db.js";
 
 dotenv.config();
 
-connectDB
+connectDB();
 
 const importData = async () => {
     try {
@@ -42,10 +42,16 @@ const destroyData = async () => {
         await Product.deleteMany();
         await User.deleteMany();
 
-        console.log('Data Destroyed!'.red.inverse)
+        console.log('Data Destroyed!'.yellow.inverse)
         process.exit();
     } catch (error) {
         console.error(`${error}`.red.inverse);
         process.exit(1);
     }
+}
+
+if (process.argv[2] === '-d') {
+    destroyData(); 
+}   else {
+    importData();
 }
