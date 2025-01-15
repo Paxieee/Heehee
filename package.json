@@ -11,6 +11,7 @@
     "color": "^4.2.3",
     "colors": "^1.4.0",
     "convert-source-map": "^2.0.0",
+    "cookie-parser": "^1.4.7",
     "debug": "^4.4.0",
     "electron-to-chromium": "^1.5.75",
     "escalade": "^3.2.0",
