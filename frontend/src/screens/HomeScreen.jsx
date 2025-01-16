@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from '../components/Loader';
 import {Row, Col} from 'react-bootstrap';
 import Product from '../components/Product';
-import { useGetProductsQuery } from '../slices/productApiSlice';
+import { useGetProductsQuery } from '../slices/productsApiSlice';
 import Message from '../components/Message'; 
 
 
