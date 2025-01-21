@@ -10,7 +10,7 @@ const generateToken = (res,userId) => {
         httpOnly: true,
         secure: process.env.NODE_ENV !== 'development',
         sameSite: 'strict',
-        masAge: 50 * 24 * 360 * 1000 // 50 days
+        maxAge: 50 * 24 * 360 * 1000 // 50 days
     });
 }
 
