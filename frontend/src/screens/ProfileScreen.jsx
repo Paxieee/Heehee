@@ -17,7 +17,7 @@ const ProfileScreen = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
 
     const {userInfo} = useSelector((state) => state.auth)
 
