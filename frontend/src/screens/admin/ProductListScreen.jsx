@@ -86,7 +86,7 @@ const ProductListScreen = () => {
                                             <FaEdit style={{color: 'white'}}/>
                                         </Button>
                                     </LinkContainer>
-                                    <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(product._id)}>
+                                    <Button variant='warning' className='btn-sm' onClick={() => deleteHandler(product._id)}>
                                         <FaTrash style={{color: 'white'}}/>
                                     </Button>
                                 </td>

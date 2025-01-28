@@ -146,18 +146,33 @@ const getUserByID = asyncHandler(async (req, res) => {
 const deleteUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
 
+    // -------------------------------------------------------------------------------------
     if (user) {
         if (user.isAdmin) {
             res.status(400);
-            throw new Error('Cannot delete admin users.');
+            throw new Error();
         }
-        
         await User.deleteOne({_id: user._id});
-        res.status(201).json({ message: 'User deleted.' })
+        res.json({ message: 'User deleted(backend - deleteUser controller).' })
     } else {
         res.status(404);
-        throw new Error('User not found.')
-    }
+        throw new Error('User not found(backend - deleteUser controller).')
+    };
+    // ^Comment^: At this point, backend send error message while deleting a non-admin user, frontend send error message while deleting a admin user.
+
+    // if (user) {
+    //     if (user.isAdmin) {
+    //         res.status(400);
+    //         throw new Error('Cannot delete admin users.');
+    //     }
+    //     await User.deleteOne({_id: user._id});
+    //     res.json({ message: 'User deleted(backend deleteUser controller).' })
+    // } else {
+    //     res.status(404);
+    //     throw new Error('User not found.')
+    // };
+    // -------------------------------------------------------------------------------------
+
 });
 
 // @desc    Update users

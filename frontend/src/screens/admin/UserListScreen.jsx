@@ -12,17 +12,38 @@ const UserListScreen = () => {
 
   const [deleteUser, {isLoading: loadingDelete}] = useDeleteUserMutation();
   
+  // --------------------------------------------------------------------------------------
   const deleteHandler = async (id) => {
     if (window.confirm('Confirm deleting a user?')) {
         try {
-            await deleteUser(id);
-            toast.success('User deleted.');
+            const response = await deleteUser(id);
+
+            if (response.status === 201) {
+            toast.success('User deleted(frontend - deleteHandler).');
             refetch();
+            } else {
+              toast.error(response?.data?.message || 'Cannot delete admin users(frontend - deleteHandler).');
+              refetch();
+            }
         } catch (err) {
             toast.error(err?.data?.message || err.message)
         }
     }
-  }
+  };
+  // ^Comment^: At this point, backend send error message while deleting a non-admin user, frontend send error message while deleting a admin user.
+
+  // const deleteHandler = async (id) => {
+  //   if (window.confirm('Confirm deleting a user?')) {
+  //       try {
+  //           await deleteUser(id);
+  //           toast.success('User deleted(frontend deleteHandler).');
+  //           refetch();
+  //       } catch (err) {
+  //           toast.error(err?.data?.message || err.message)
+  //       }
+  //   }
+  // };
+  // --------------------------------------------------------------------------------------
 
   return (
     <>
@@ -47,7 +68,7 @@ const UserListScreen = () => {
               <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
-                <td><a href={`mailto:${user.email}`}></a>{user.email}</td>
+                <td><a href={`mailto:${user.email}`}>{user.email}</a></td>
                 <td>
                   {user.isAdmin ? (
                     <FaCheck style={{ color: 'green' }} />
@@ -56,11 +77,11 @@ const UserListScreen = () => {
                   )}
                 </td>
                 <td>
-                  {/* <LinkContainer to={`/admin/user/${user._id/edit}`}>
-                    <Button variant='light' className='btn-sm'>
-                      <FaEdit />
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}> 
+                    <Button variant='info' className='btn-sm mx-2'>
+                      <FaEdit style={{ color: 'white'}} />
                     </Button>
-                  </LinkContainer> */}
+                  </LinkContainer>
                   <Button variant='warning' className='btn-sm' onClick={() => deleteHandler(user._id)}>
                     <FaTrash style={{ color: 'white'}} />
                   </Button>
