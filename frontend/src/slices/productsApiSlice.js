@@ -44,7 +44,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 // url: `${UPLOAD_URL}`,
                 method: 'POST',
                 body: data,
-            })
+            }),
         }),
         deleteProduct: builder.mutation({
             query: (productId) => ({

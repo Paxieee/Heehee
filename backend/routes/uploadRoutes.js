@@ -23,7 +23,7 @@ function fileFilter(req, file, cb) {
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = mimetypes.test(file.minetype);
     
-    if (extname && mimetypes) {
+    if (extname && mimetype) {
         cb(null, true);
     } else {
         cb(new Error('Images only!'), false);
