@@ -1,8 +1,4 @@
-// ----------------------------------------------------------------------
-import { PRODUCTS_URL } from '../constants';
-// ----------------------------------------------------------------------
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// import { PRODUCTS_URL, UPLOAD_URL } from '../constants';
+import { PRODUCTS_URL, UPLOAD_URL } from '../constants';
 import { apiSlice } from './apiSlice';
 
 export const productsApiSlice = apiSlice.injectEndpoints({
@@ -37,11 +33,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         }),
         uploadProductImage: builder.mutation({
             query: (data) => ({
-                // --------------------
-                url: `api/upload`,
-                // --------------------
-                // ^^^^^^^^^^^^^^^^^^^^
-                // url: `${UPLOAD_URL}`,
+                url: UPLOAD_URL,
                 method: 'POST',
                 body: data,
             }),
