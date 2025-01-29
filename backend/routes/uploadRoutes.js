@@ -17,11 +17,8 @@ const storage = multer.diskStorage({
 // ------------------------------------------------------------------------
 
 function fileFilter(req, file, cb) {
-    // const filetypes = /jpe?g|png|webp|gif|svg/;
-    // const mimetypes = /image\/jpe?g | image\/png | image\/webp | image\/gif | image\/svg/;
-
-    const filetypes = /jpe?g|png|webp/;
-    const mimetypes = /image\/jpe?g|image\/png|image\/webp/;
+    const filetypes = /jpe?g|png|webp|gif|svg/;
+    const mimetypes = /image\/jpe?g|image\/png|image\/webp|image\/gif|image\/svg/;
 
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = mimetypes.test(file.mimetype);
